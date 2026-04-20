@@ -41,7 +41,7 @@ export const Route = createFileRoute("/producto/$slug")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: ReturnType<typeof getProduct> & object };
   const { add } = useCart();
   const [active, setActive] = useState(0);
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
