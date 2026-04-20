@@ -41,14 +41,16 @@ export const Route = createFileRoute("/producto/$slug")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData() as { product: ReturnType<typeof getProduct> & object };
+  const { product } = Route.useLoaderData();
   const { add } = useCart();
   const [active, setActive] = useState(0);
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
   // Galería intercalando producto + lifestyle
-  const gallery = product.images.flatMap((img, i) =>
-    product.lifestyle[i] ? [img, product.lifestyle[i]] : [img],
+  const images: string[] = product.images;
+  const lifestyle: string[] = product.lifestyle;
+  const gallery: string[] = images.flatMap((img, i) =>
+    lifestyle[i] ? [img, lifestyle[i]] : [img],
   );
 
   return (
