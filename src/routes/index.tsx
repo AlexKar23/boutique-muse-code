@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { products } from "@/lib/products";
+import { products, ugcImages, lifestyleHeroes } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ArrowRight, Quote, Star } from "lucide-react";
 
@@ -12,6 +12,7 @@ export const Route = createFileRoute("/")({
         content:
           "Bisutería artesanal diseñada en Madrid. Cada pieza es única, hecha a mano para mujeres que rompen las reglas.",
       },
+      { property: "og:image", content: lifestyleHeroes.primary },
     ],
   }),
   component: Home,
@@ -35,14 +36,7 @@ const reviews = [
   },
 ];
 
-const ugc = [
-  "https://images.unsplash.com/photo-1581338834647-b0fb40704e21?w=600&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1496217590455-aa63a8350eea?w=600&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1521334884684-d80222895322?w=600&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=600&auto=format&fit=crop&q=80",
-];
+const ugc = ugcImages;
 
 function Home() {
   const [hero1, hero2, hero3] = products;
